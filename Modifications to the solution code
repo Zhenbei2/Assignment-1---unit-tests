@@ -29,3 +29,4 @@ class Solution:
             i += 1
 
         return res
+#From the test report: the problem exposed by test_no_repeating_chars has been resolved, but the two test cases test_chars_in_order() and test_chars_not_in_order() still fail.

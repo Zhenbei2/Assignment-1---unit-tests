@@ -1,0 +1,31 @@
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        if not s:
+            return []
+
+        count = {}
+        res = []
+        i, length = 0, len(s)
+
+        # Build a dictionary to record the last occurrence of each letter
+        for j in range(length):
+            c = s[j]
+            count[c] = j
+
+        cur_len = 0
+        last_end = -1  # Initialize last_end to -1
+        while i < length:
+            # Record the last occurrence of all characters in the current label
+            c = s[i]
+            end = count[c]
+
+            # If the current position has reached the end position of a label, add it to the result list
+            last_end = max(last_end, end)
+            cur_len += 1
+            if i == last_end:
+                res.append(cur_len)
+                cur_len = 0
+                last_end = -1  # Reset last_end and cur_len
+            i += 1
+
+        return res
